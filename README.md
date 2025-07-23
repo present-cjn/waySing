@@ -5,7 +5,7 @@
 *在这里，你可以同时展示多个正在进行的挑战。*
 
 ### 挑战1：7天断舍离计划
-* 进度: （这里显示进度条） 
+* 进度: ![Challenge Progress](https://img.shields.io/badge/⚪️⚪️⚪️⚪️⚪️⚪️⚪️-Day%200%2F7-orange?labelColor=white)
 * 日志: [➡️ 查看日志](./challenges/01_7-day-declutter/LOG.md)
 * 看板: ➡️ 前往任务看板 
 
