@@ -1,0 +1,20 @@
+- id: 01-declutter
+  name: "7天断舍离计划"
+  status: "ongoing"
+  total_days: 7
+  log_path: "./challenges/01_7-day-declutter/LOG.md"
+  project_url: "https://github.com/users/present-cjn/projects/2"
+
+- id: 02-fitness
+  name: "14天运动计划"
+  status: "ongoing"
+  total_days: 14
+  log_path: "./challenges/02-fitness/LOG.md"
+  project_url: ""
+
+- id: 03-early-rising
+  name: "早睡早起"
+  status: "planned"
+  total_days: 30
+  log_path: "./challenges/03-early-rising/LOG.md"
+  project_url: ""

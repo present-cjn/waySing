@@ -1,29 +1,35 @@
-name: Update Progress Bar
+# .github/workflows/main.yml
+name: Update README Dashboard
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'challenges/01_7-day-declutter/LOG.md' # 只在你的挑战日志更新时运行
+      - 'challenges.yml' # 当“数据库”变化时
+      - 'challenges/**/LOG.md' # 或者任何一个日志变化时
+      - 'README.template.md' # 或者模板变化时
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 授予机器人回写代码的权限
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: Run progress update script
-        run: python scripts/update_progress.py
+      - name: Install Dependencies
+        run: pip install PyYAML
+
+      - name: Run README generator script
+        run: python scripts/update_readme.py
 
       - name: Commit and Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore(automation): 🤖 Auto-update progress bar"
-          file_pattern: 'README.md' # 这次我们提交的是README.md的改动
+          commit_message: "chore(automation): 🤖 Auto-update README dashboard"
+          file_pattern: 'README.md'
