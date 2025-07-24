@@ -1,23 +1,21 @@
 # waySing
-我亦行人
 
 ## 🚀进行中的挑战
 *在这里，你可以同时展示多个正在进行的挑战。*
 
-### 挑战1：7天断舍离计划
-* 进度: ![Challenge Progress](https://img.shields.io/badge/⚪️⚪️⚪️⚪️⚪️⚪️⚪️-Day%200%2F7-orange?labelColor=white)
+### 7天断舍离计划
+* 进度: ![7天断舍离计划 Progress](https://img.shields.io/badge/⚪️⚪️⚪️⚪️⚪️⚪️⚪️-Day%200%2F7-lightgrey?labelColor=lightgrey)
 * 日志: [➡️ 查看日志](./challenges/01_7-day-declutter/LOG.md)
-* 看板: ➡️ 前往任务看板 
+* 看板: [➡️ 前往任务看板](https://github.com/users/present-cjn/projects/2)
 
-### 挑战2：14天运动计划
-* 进度: （这里显示进度条） 
-* 日志: ➡️ 查看日志 
-* 看板: ➡️ 前往任务看板 
+### 14天运动计划
+* 进度: ![14天运动计划 Progress](https://img.shields.io/badge/⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️⚪️-Day%200%2F14-lightgrey?labelColor=lightgrey)
+* 日志: [➡️ 查看日志](./challenges/02-fitness/LOG.md)
+* 看板: [➡️ 前往任务看板]()
+
 
 ## 💡计划中的挑战
-* [ ] 早睡早起
-* [ ] 阅读
-* [ ] 软考
+- [ ] 早睡早起
+
 
 ## 🏆 成就殿堂
-*这里将用来展示你已完成的挑战和解锁的成就。*
