@@ -1,0 +1,67 @@
+name: Daily Log Writer
+
+on:
+  issues:
+    types: [opened] # 当有新的Issue被创建时触发
+
+jobs:
+  write-log:
+    # 只有被打上 'daily-log' 标签的Issue才运行
+    if: contains(github.event.issue.labels.*.name, 'daily-log')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 需要写入文件的权限
+      issues: write   # 需要关闭Issue的权限
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Append to Log File
+        run: |
+          import os
+          from datetime import datetime
+
+          issue_body = os.getenv('ISSUE_BODY')
+
+          # 从 Issue Body 中解析出表单内容
+          challenge_id = issue_body.split('### 选择挑战')[1].splitlines()[2].strip()
+          status = issue_body.split('### 今日状态')[1].splitlines()[2].strip()
+          reflection = issue_body.split('### 心得与反思')[1].split('</details>')[0].splitlines()[2:]
+          reflection_text = "\n".join(reflection).strip()
+
+          # 找到对应的LOG.md文件
+          log_file = f"challenges/{challenge_id}/LOG.md"
+
+          # 读取LOG.md，确定是第几天
+          with open(log_file, 'r', encoding='utf-8') as f:
+              content = f.read()
+          day_count = len(re.findall(r"##\s+Day\s+\d+", content))
+          new_day = day_count + 1
+
+          # 准备要追加的新日志内容
+          today_str = datetime.now().strftime('%Y年%m月%d日')
+          new_log_entry = f"\n---\n## Day {new_day}: {today_str}\n**状态:** {status}\n\n**心得与反思:**\n{reflection_text}\n"
+
+          # 追加到文件末尾
+          with open(log_file, 'a', encoding='utf-8') as f:
+              f.write(new_log_entry)
+
+          print(f"Successfully appended to {log_file}")
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+
+      - name: Commit and Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs(log): ✍️ Add new daily log entry"
+          file_pattern: 'challenges/**/*.md'
+
+      - name: Close the issue
+        uses: peter-evans/close-issue@v3
+        with:
+          comment: "📝 感谢记录！日志已自动归档，此Issue已关闭。"

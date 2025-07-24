@@ -1,0 +1,37 @@
+name: "每日日志 ✍️"
+description: "通过填写表单来记录你的每日进展。"
+title: "[Log] " # 自动为新日志Issue添加标题前缀
+labels: ["daily-log"] # 自动为新日志打上标签
+body:
+  - type: markdown
+    attributes:
+      value: "请填写你今天的进展，这将自动追加到对应的挑战日志中。"
+  - type: dropdown
+    id: challenge
+    attributes:
+      label: "选择挑战"
+      description: "你正在为哪个挑战记录日志？"
+      options:
+        - 01-declutter # 确保这里的选项和你的 challenges.yml 里的 id 一致
+        - 02-fitness
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: "今日状态"
+      description: "选择你今天的完成情况。"
+      options:
+        - "✅ 成功"
+        - "❌ 失败"
+        - "🥱 跳过"
+    validations:
+      required: true
+  - type: textarea
+    id: reflection
+    attributes:
+      label: "心得与反思"
+      description: "详细记录你今天的想法、遇到的问题和取得的成就。"
+      placeholder: "今天我学到了..."
+    validations:
+      required: true
