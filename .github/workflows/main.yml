@@ -2,6 +2,7 @@
 name: Update README Dashboard
 
 on:
+  # 触发器一：当有代码被直接推送到 main 分支时，正式运行
   push:
     branches:
       - main
@@ -9,6 +10,12 @@ on:
       - 'challenges.yml' # 当“数据库”变化时
       - 'challenges/**/LOG.md' # 或者任何一个日志变化时
       - 'README.template.md' # 或者模板变化时
+
+  # 触发器二：当有新的“拉取请求”指向 main 分支时，作为测试运行
+  pull_request:
+    branches:
+      - main
+    types: [ opened, synchronize ] # 当PR被创建或有新提交时触发
   workflow_dispatch:
 
 jobs:
